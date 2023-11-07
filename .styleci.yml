@@ -1,5 +1,7 @@
 preset: psr2
 
+risky: true
+
 enabled:
   - binary_operator_spaces
   - blank_line_before_return
@@ -11,6 +13,7 @@ enabled:
   - lowercase_cast
   - method_separation
   - native_function_casing
+  - native_function_invocation
   - no_blank_lines_after_class_opening
   - no_blank_lines_between_uses
   - no_duplicate_semicolons
