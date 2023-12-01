@@ -70,7 +70,7 @@ class CryptKey
         if ($keyPermissionsCheck === true) {
             // Verify the permissions of the key
             $keyPathPerms = decoct(fileperms($keyPath) & 0777);
-            if (\in_array($keyPathPerms, ['600', '660'], true) === false) {
+            if (\in_array($keyPathPerms, ['600', '660', '770'], true) === false) {
                 trigger_error(sprintf(
                     'Key file "%s" permissions are not correct, recommend changing to 600 instead of %s',
                     $keyPath,
