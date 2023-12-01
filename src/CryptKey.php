@@ -69,16 +69,13 @@ class CryptKey
 
         if ($keyPermissionsCheck === true) {
             // Verify the permissions of the key
-            $keyPathPerms = \decoct(\fileperms($this->keyPath) & 0777);
-            if (\in_array($keyPathPerms, ['400', '440', '600', '640', '660'], true) === false) {
-                \trigger_error(
-                    \sprintf(
-                        'Key file "%s" permissions are not correct, recommend changing to 600 or 660 instead of %s',
-                        $this->keyPath,
-                        $keyPathPerms
-                    ),
-                    E_USER_NOTICE
-                );
+            $keyPathPerms = decoct(fileperms($keyPath) & 0777);
+            if (\in_array($keyPathPerms, ['600', '660', '770'], true) === false) {
+                trigger_error(sprintf(
+                    'Key file "%s" permissions are not correct, recommend changing to 600 instead of %s',
+                    $keyPath,
+                    $keyPathPerms
+                ), E_USER_NOTICE);
             }
         }
     }
